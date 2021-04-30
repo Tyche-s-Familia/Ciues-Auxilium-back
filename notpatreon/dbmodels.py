@@ -81,6 +81,9 @@ class Project(db.Model):
         lazy='subquery'
     )
 
+    def __repr__(self):
+        return f'Project {self.id} - ({self.name} -- {self.authors})'
+
     def serialize(self):
         return {
             'id': self.id,

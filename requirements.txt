@@ -2,9 +2,11 @@ click==7.1.2
 Flask==1.1.2
 Flask-SQLAlchemy==2.5.1
 greenlet==1.0.0
+gunicorn==20.1.0
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+-e git+git@github.com:Tyche-s-Familia/Ciues-Auxilium-back.git@75c5dc83ac628ce6c8fc5fbd05bea677d94668bf#egg=notpatreon
 psycopg2==2.8.6
 SQLAlchemy==1.4.12
 Werkzeug==1.0.1

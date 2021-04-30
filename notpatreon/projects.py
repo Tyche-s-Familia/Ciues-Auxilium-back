@@ -4,10 +4,16 @@ from .dbmodels import db, User, Project
 
 projects = Blueprint('/projects', __name__, url_prefix='/projects')
 
+@projects.route('/', methods=['GET'])
+def get_projects():
+    print(Project.query.all())
+    projects = [project.serialize() for project in Project.query.all()]
+    return jsonify(projects)
+
 
 @projects.route('/', methods=['POST'])
 def create_project():
-    current_user = User.query.filter_by(id=1).first()
+    current_user = User.query.filter_by(id=2).first()
     try:
         new_project = Project(
             name=request.json['name'],

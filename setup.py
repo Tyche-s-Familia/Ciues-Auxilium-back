@@ -7,6 +7,7 @@ setup(
     install_requires=[
         'flask',
         'Flask-SQLAlchemy',
-        'psycopg2'
+        'psycopg2',
+        'gunicorn'
     ],
 )
