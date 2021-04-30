@@ -1,1 +1,1 @@
-web: gunicorn notpatreon
+web: gunicorn notpatreon:create_app()
