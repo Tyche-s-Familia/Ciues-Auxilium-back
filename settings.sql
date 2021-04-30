@@ -1,0 +1,3 @@
+CREATE DATABASE eflaski;
+CREATE USER ealchemist WITH PASSWORD 'testingorm';
+GRANT ALL PRIVILEGES ON DATABASE flaski TO ealchemist;
