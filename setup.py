@@ -9,6 +9,7 @@ setup(
         'Flask-SQLAlchemy',
         'psycopg2',
         'gunicorn',
-        'bcrypt'
+        'bcrypt',
+        'Flask-Cors'
     ],
 )
