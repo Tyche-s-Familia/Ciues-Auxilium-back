@@ -1,10 +1,12 @@
 import os
+from flask_cors import CORS
 
 from flask import Flask
 
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config.update(
         SECRET_KEY=os.environ['SECRET_KEY'],
         SQLALCHEMY_DATABASE_URI=os.environ['DATABASE_URI'],
