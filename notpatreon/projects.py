@@ -1,4 +1,6 @@
+import re
 from flask import Blueprint, jsonify, request
+from flask import session as ses
 
 from .dbmodels import db, User, Project
 
@@ -13,11 +15,14 @@ def get_projects():
 
 @projects.route('/', methods=['POST'])
 def create_project():
-    current_user = User.query.filter_by(id=2).first()
+    user_id = ses.get('user_id')
+    print(user_id)
+    current_user = User.query.filter_by(id = user_id).first()
     try:
         new_project = Project(
             name=request.json['name'],
-            authors=[current_user]
+            authors=[current_user],
+            description=request.json['description']
         )
     except KeyError:
         return {'message': 'You must provide a project name'}

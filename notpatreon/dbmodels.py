@@ -41,6 +41,10 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(999), unique=True, nullable=False)
     email = db.Column(db.String(999), unique=True, nullable=False)
+    hash = db.Column(db.String(999), nullable=False)
+    # image_url =db.Column(db.String(999), nullable=True, default=None)
+    # credits = db.Column(db.Integer, default=0)
+    # bio = db.Column(db.Text(), default=None)
     projects_created = db.relationship(
         'Project',
         secondary=project_authors,
@@ -51,6 +55,7 @@ class User(db.Model):
         secondary=project_supporters,
         lazy='subquery'
     )
+    
     # projects_created = db.relationship('Project', backref='author', lazy=True)
 
     def __repr__(self):
@@ -70,6 +75,9 @@ class User(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(999), unique=True, nullable=False)
+    description = db.Column(db.Text())
+    # image_url =db.Column(db.String(999), nullable=True, default=None)
+
     authors = db.relationship(
         'User',
         secondary=project_authors,
@@ -88,5 +96,7 @@ class Project(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'description':self.description,
+            # 'image_url':self.image_url,
             'author_id': self.authors[0].id
         }
