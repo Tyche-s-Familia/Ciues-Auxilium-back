@@ -10,3 +10,4 @@ psycopg2==2.8.6
 SQLAlchemy==1.4.12
 Werkzeug==1.0.1
 bcrypt==3.2.0 
+Flask-Cors==3.0.10
