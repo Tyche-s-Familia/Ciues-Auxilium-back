@@ -6,7 +6,7 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, supports_credentials=True)
     app.config.update(
         SECRET_KEY=os.environ['SECRET_KEY'],
         SQLALCHEMY_DATABASE_URI=os.environ['DATABASE_URI'],
@@ -20,6 +20,8 @@ def create_app():
     from notpatreon import projects
     app.register_blueprint(users.users)
     app.register_blueprint(projects.projects)
+    CORS(users.users)
+    CORS(projects.projects)
     return app
 
 if __name__ == "__main__":
