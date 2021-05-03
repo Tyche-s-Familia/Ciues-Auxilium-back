@@ -13,7 +13,7 @@ def get_projects():
     return jsonify(projects)
 
 
-@projects.route('/', methods=['POST'])
+@projects.route('/post', methods=['POST'])
 def create_project():
     user_id = ses.get('user_id')
     print(user_id)
@@ -29,3 +29,10 @@ def create_project():
     db.session.add(new_project)
     db.session.commit()
     return jsonify(new_project.serialize())
+
+@projects.route('/<int:id>')
+def get_project_info(id):
+    project = Project.query.filter_by(id=id).first()
+    if project is None:
+        return {'message': 'Requested project does not exist!'}
+    return jsonify(project.serialize())
